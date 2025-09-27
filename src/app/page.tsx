@@ -1,11 +1,14 @@
 import H1 from '@/components/common/h1';
 import P from '@/components/common/p';
+import { getRepos } from '@/lib/actions';
 import paths from '@/paths';
 import Link from 'next/link';
 
 export default async function Home() {
   const styles =
     'border-b-[1px] border-gray-900 dark:border-gray-100 hover:opacity-90';
+  const repos = await getRepos();
+  console.log(repos[0]);
   return (
     <main>
       <section>
