@@ -3,7 +3,7 @@ import OldNew from '@/components/common/old-new';
 import Pagination from '@/components/common/pagination';
 import ReposList from '@/components/home/repo-list';
 import LanguagesList from '@/components/projects/languages-list';
-import { getRepos } from '@/lib/actions';
+import { distinctLanguages, getRepos } from '@/lib/actions';
 import { getFilteredRepos } from '@/lib/actions/get-repos';
 
 export default async function ProjectstPage({
@@ -14,7 +14,7 @@ export default async function ProjectstPage({
   const params = await searchParams;
 
   const order = params?.order ?? 'newest';
-  const stars = params?.stars === 'true';
+  const stars = params?.stars === 'true' ? true : false;
   const page = params?.page ?? '1';
   const limit = params?.limit ?? '4';
 
@@ -32,20 +32,14 @@ export default async function ProjectstPage({
     page: parseInt(page),
     limit: parseInt(limit),
   });
-
-  const distinctLanguages = repos.reduce((acc: string[], repo) => {
-    if (repo.language && !acc.includes(repo.language)) {
-      acc.push(repo.language);
-    }
-    return acc;
-  }, []);
+  const distinctLanguage = distinctLanguages({ repos });
 
   return (
     <section>
       <H1 classes="text-2xl">Projectst</H1>
       <div className="mt-4 mb-8 space-y-1.5">
         <OldNew />
-        <LanguagesList languages={distinctLanguages} />
+        <LanguagesList languages={distinctLanguage} />
       </div>
       <ReposList repos={filteredRepos} />
       <Pagination pageCount={pageCount} />

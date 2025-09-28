@@ -1,7 +1,9 @@
+import Bold from '@/components/about/bold';
 import Experience from '@/components/about/experience';
 import Languages from '@/components/about/languages';
 import Passion from '@/components/about/passion';
 import SectionCard from '@/components/about/section-card';
+import Stack from '@/components/about/stack';
 import Link from 'next/link';
 
 export default function AboutPage() {
@@ -49,16 +51,10 @@ export default function AboutPage() {
               <p>
                 My computer engineering program has exposed me to a wide range
                 of technologies and concepts. I've gained experience with{' '}
-                <strong className="text-gray-900 dark:text-white">C#</strong>{' '}
+                <Bold text="C#" />
                 for application development,
-                <strong className="text-gray-900 dark:text-white">
-                  {' '}
-                  Unity
-                </strong>{' '}
-                for game development,{' '}
-                <strong className="text-gray-900 dark:text-white">
-                  Java
-                </strong>{' '}
+                <Bold text="Unity" />
+                for game development, <Bold text="Java" />
                 for object-oriented programming, and various other technologies
                 that have given me a comprehensive understanding of software
                 engineering principles.
@@ -70,28 +66,15 @@ export default function AboutPage() {
           <SectionCard classes="bg-white" h2Orh3={true} title="Current Focus">
             <div className="space-y-4 text-gray-600 dark:text-gray-300">
               <p>
-                Professionally, I specialize in{' '}
-                <strong className="text-gray-900 dark:text-white">
-                  Next.js
-                </strong>{' '}
-                and{' '}
-                <strong className="text-gray-900 dark:text-white">
-                  TypeScript
-                </strong>
-                , building modern, performant web applications. I'm particularly
-                passionate about creating seamless user experiences with clean,
-                maintainable code.
+                Professionally, I specialize in <Bold text="Next.js" />
+                and <Bold text="TypeScript" />, building modern, performant web
+                applications. I'm particularly passionate about creating
+                seamless user experiences with clean, maintainable code.
               </p>
               <p>
-                On the backend side, I'm expanding my{' '}
-                <strong className="text-gray-900 dark:text-white">
-                  Python
-                </strong>{' '}
+                On the backend side, I'm expanding my <Bold text="Python" />
                 expertise by learning
-                <strong className="text-gray-900 dark:text-white">
-                  {' '}
-                  FastAPI
-                </strong>{' '}
+                <Bold text="FastAPI" />
                 for a university project, developing robust and efficient API
                 solutions.
               </p>
@@ -108,22 +91,14 @@ export default function AboutPage() {
             title="Professional Stack"
           >
             <div className="space-y-3">
-              <div>
-                <h4 className="font-medium text-gray-900 dark:text-white">
-                  Frontend Specialization
-                </h4>
-                <p className="text-sm text-gray-600 dark:text-gray-300 mt-1">
-                  Next.js, TypeScript, Tailwind CSS, React
-                </p>
-              </div>
-              <div>
-                <h4 className="font-medium text-gray-900 dark:text-white">
-                  Backend & Data
-                </h4>
-                <p className="text-sm text-gray-600 dark:text-gray-300 mt-1">
-                  Python, FastAPI, RESTful APIs
-                </p>
-              </div>
+              <Stack
+                title="Frontend Specialization"
+                text="Next.js, TypeScript, Tailwind CSS, React"
+              />
+              <Stack
+                title="Backend & Data"
+                text="Python, FastAPI, RESTful APIs"
+              />
             </div>
           </SectionCard>
 
@@ -232,7 +207,7 @@ export default function AboutPage() {
             Get In Touch
           </Link>
           <a
-            href="https://github.com/yourusername"
+            href="https://github.com/DappDevMehran"
             target="_blank"
             rel="noopener noreferrer"
             className="border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 px-6 py-3 rounded-md font-medium hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
