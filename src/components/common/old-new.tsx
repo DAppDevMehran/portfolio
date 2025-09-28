@@ -21,16 +21,34 @@ export default function OldNew() {
   const oldestUrl = queryParamMaker('oldest');
   const newestUrl = queryParamMaker('newest');
 
-  const active = (val: string) => {
-    return `${val === currentOrder ? 'underline' : ''}`;
-  };
+  const isActive = (val: string) => currentOrder === val;
 
   return (
-    <div className="flex flex-row gap-2 *:text-sm text-gray-900 dark:*:text-gray-100 *:hover:underline">
-      <Link className={active('oldest')} href={oldestUrl}>
+    <div className="flex flex-row gap-3 p-1 bg-gray-100 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 w-fit">
+      <Link
+        className={`
+          px-4 py-2 rounded-md text-sm font-medium transition-all duration-200
+          ${
+            isActive('oldest')
+              ? 'bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 shadow-sm border border-gray-300 dark:border-gray-600'
+              : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-white/50 dark:hover:bg-gray-700/50'
+          }
+        `}
+        href={oldestUrl}
+      >
         Oldest
       </Link>
-      <Link className={active('newest')} href={newestUrl}>
+      <Link
+        className={`
+          px-4 py-2 rounded-md text-sm font-medium transition-all duration-200
+          ${
+            isActive('newest')
+              ? 'bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 shadow-sm border border-gray-300 dark:border-gray-600'
+              : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-white/50 dark:hover:bg-gray-700/50'
+          }
+        `}
+        href={newestUrl}
+      >
         Newest
       </Link>
     </div>

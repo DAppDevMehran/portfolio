@@ -35,9 +35,9 @@ export default async function ProjectstPage({
   const distinctLanguage = distinctLanguages({ repos });
 
   return (
-    <section>
-      <H1 classes="text-2xl">Projectst</H1>
-      <div className="mt-4 mb-8 space-y-1.5">
+    <section className="max-w-6xl mx-auto px-4 py-8">
+      <H1 classes="text-4xl font-bold mb-8 text-center">Projects</H1>
+      <div className="mb-12 space-y-4 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-200 dark:border-gray-700">
         <OldNew />
         <LanguagesList languages={distinctLanguage} />
       </div>

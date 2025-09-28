@@ -13,7 +13,7 @@ interface RepoItemProps {
 
 export default async function ReposList({ repos }: RepoListProps) {
   return (
-    <ul className="mt-6 flex flex-row flex-wrap justify-between items-center gap-2.5">
+    <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 mt-8">
       {repos.map((repo) => (
         <RepoItem
           key={repo.id}
@@ -25,6 +25,6 @@ export default async function ReposList({ repos }: RepoListProps) {
           html_url={repo.html_url}
         />
       ))}
-    </ul>
+    </div>
   );
 }
